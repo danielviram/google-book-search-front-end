@@ -22,5 +22,21 @@ const Book = (props) => {
         .then((save) => {
             console.log(save);
         })
-    }
-}
+        .catch((err) => console.log(err));
+    };
+
+    return (
+        <div style={{marginTop: 20, padding:10,border: "2px solid #000"}}>
+            <img src={props.image} alt="Book" />
+            <h2>{props.title}</h2>
+            <h3>{props.subtitle}</h3>
+            <p>{props.description}</p>
+            {props.author.legth === 0
+            ? null 
+            : props.author.map((author,index) => <p key={index}>{author}</p>)}
+            <button onClick={onSavedBookClick}>Save</button>
+        </div>
+    );
+};
+
+export default Book;
